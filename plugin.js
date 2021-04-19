@@ -13,7 +13,16 @@ module.exports = function (context) {
     contentLoaded({ content }) {
       fs.writeFileSync(
         path.join(context.siteDir, "docs", "post.md"),
-        [`# ${content.title}`, content.content].join("\n\n")
+        [
+          "---",
+          "id: post",
+          "title: post",
+          "---",
+          "",
+          `# ${content.title}`,
+          "",
+          content.content,
+        ].join("\n")
       );
     },
   };
